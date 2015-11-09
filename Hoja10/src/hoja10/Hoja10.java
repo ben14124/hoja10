@@ -8,9 +8,8 @@ package hoja10;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.TreeMap;
+import java.util.Vector;
 
 /**
  *
@@ -25,7 +24,10 @@ public class Hoja10 {
         System.out.println("la ruta mas corta es: la integral de línea desde t=0 hasta t=3, parametrizando x=cost, y = sent, z = 1");
         // TODO code application logic here
         
-        File diccionario= new File ("guategrafos.txt");
+        File diccionario = new File ("guategrafo.txt");
+        Vector<String> Ciudad1 = new Vector<>();
+        Vector<String> Ciudad2 = new Vector<>();
+        Vector<Integer> Distancia = new Vector<>();
         
         try{
             BufferedReader br = new BufferedReader(new FileReader(diccionario));
@@ -33,12 +35,10 @@ public class Hoja10 {
                 for(String line; (line = br.readLine()) != null; ){
                     String[] entry;
                     entry= line.split(" ");
-                    entry[0]=entry[0].substring(1).toLowerCase();
-                    entry[1]=(String) entry[1].subSequence(1, entry[1].length()-1);
-                    entry[1]=entry[1].toLowerCase();
-                    
+                    Ciudad1.addElement(entry[0]);
+                    Ciudad2.addElement(entry[1]);
+                    Distancia.addElement(Integer.parseInt(entry[2]));
                 }
-              
             }
             catch(Exception e){
             }
@@ -46,6 +46,7 @@ public class Hoja10 {
         catch(Exception e){
             
         }
+                
     Digraph<Integer> graph= new Digraph<Integer>();
     graph.addNodes(Arrays.asList(1,2,3,4,5));
 
