@@ -30,7 +30,6 @@ public class Hoja10 {
         try{
             BufferedReader br = new BufferedReader(new FileReader(diccionario));
             try { 
-                ArrayList<TreeMap> lista= new ArrayList<TreeMap>();
                 for(String line; (line = br.readLine()) != null; ){
                     String[] entry;
                     entry= line.split(" ");
