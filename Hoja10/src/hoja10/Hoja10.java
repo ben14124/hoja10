@@ -5,7 +5,12 @@
  */
 package hoja10;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.TreeMap;
 
 /**
  *
@@ -20,7 +25,40 @@ public class Hoja10 {
         System.out.println("la ruta mas corta es: la integral de línea desde t=0 hasta t=3, parametrizando x=cost, y = sent, z = 1");
         // TODO code application logic here
         
-
+File fileDiccionario= new File ("diccionario.txt");
+        File fileTexto= new File ("texto.txt");
+        BinaryTree diccionario= new BinaryTree(null);
+        BinarySearchTree funciones = new BinarySearchTree();
+        
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(fileDiccionario));
+            try { 
+                ArrayList<TreeMap> lista= new ArrayList<TreeMap>();
+                for(String line; (line = br.readLine()) != null; ){
+                    String[] entry;
+                    entry= line.split(",");
+                    entry[0]=entry[0].substring(1).toLowerCase();
+                    entry[1]=(String) entry[1].subSequence(1, entry[1].length()-1);
+                    entry[1]=entry[1].toLowerCase();
+                    TreeMap<String, String> entrada = new TreeMap();
+                    entrada.put(entry[0], entry[1]);
+                    lista.add(entrada);
+                }
+                diccionario.setValue(lista.get(0));
+                for (int x=1; x<lista.size(); x++){
+                    funciones.insertNode(diccionario, lista.get(x));
+                }
+                
+                System.out.println("DICCIONARIO INGLES-ESPANOL\n\nPalabras en el diccionario:\n");
+                funciones.printInOrder(diccionario);
+                System.out.println("\n");
+            }
+            catch(Exception e){
+            }
+        }
+        catch(Exception e){
+            
+        }
     Digraph<Integer> graph= new Digraph<Integer>();
     graph.addNodes(Arrays.asList(1,2,3,4,5));
 
