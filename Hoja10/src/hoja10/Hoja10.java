@@ -11,6 +11,11 @@ import java.io.FileReader;
 import java.util.Arrays;
 import java.util.Vector;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 /**
  *
  * @author dbs_jd
@@ -23,6 +28,10 @@ public class Hoja10 {
     public static void main(String[] args) {
         System.out.println("la ruta mas corta es: la integral de línea desde t=0 hasta t=3, parametrizando x=cost, y = sent, z = 1");
         // TODO code application logic here
+        
+        
+
+        Set<String> encabezadosMatriz = new HashSet(); //Set para los encabezados de la matriz
         
         File diccionario = new File ("guategrafo.txt");
         Vector<String> Ciudad1 = new Vector<>();
