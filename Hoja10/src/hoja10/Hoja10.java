@@ -31,30 +31,31 @@ public class Hoja10 {
         {
             graph.setData(i, i);
         }
-        int[][] matriz1 = new int[3][3];
-        int[][] matriz2 = new int[3][3];
-        int[][] matriz3 = new int[3][3];
+
+        int[][] matriz3 = new int[4][4];
         
         matriz3[0][0] = 0;
-        matriz3[0][1] = 1;
-        matriz3[0][2] = 1;
-        matriz3[0][3] = 0;
-        matriz3[1][0] = 0;
+        matriz3[0][1] = 7;
+        matriz3[0][2] = 3;
+        matriz3[0][3] = 3000;
+        matriz3[1][0] = 3000;
         matriz3[1][1] = 0;
-        matriz3[1][2] = 0;
+        matriz3[1][2] = 3000;
         matriz3[1][3] = 1;
-        matriz3[2][0] = 0;
-        matriz3[2][1] = 1;
+        matriz3[2][0] = 3000;
+        matriz3[2][1] = -5;
         matriz3[2][2] = 0;
-        matriz3[2][3] = 1;
-        matriz3[3][0] = 0;
-        matriz3[3][1] = 0;
-        matriz3[3][2] = 0;
+        matriz3[2][3] = 4;
+        matriz3[3][0] = 3000;
+        matriz3[3][1] = 3000;
+        matriz3[3][2] = 3000;
         matriz3[3][3] = 0;
         
-        Floyd algoritmo1 = new Floyd();
+        Floyd algoritmo1 = new Floyd(4);
         
-        algoritmo1.Floyd(4, matriz3, matriz1, matriz2);
+        int[][] matrizD = algoritmo1.AlgorithmFloyd(4, matriz3);
+        
+        System.out.println((matrizD));
         
         // now add the links between digraph nodes
 

@@ -20,7 +20,7 @@ class Floyd{
         matrizD = new int[nodos][nodos];        
     }
     
-    public void AlgorithmFloyd(int n, int[][] W)
+    public int[][] AlgorithmFloyd(int n, int[][] W)
     {
             matrizD = W;
             for (int i = 0; i<n; i++){
@@ -40,5 +40,6 @@ class Floyd{
                             }
                     }
              }
+             return matrizD;
     }
 }
