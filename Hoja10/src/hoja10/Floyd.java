@@ -11,22 +11,31 @@ package hoja10;
  * @author Daniela
  */
 class Floyd{ 
-    public void Floyd(int n, int[][] W, int[][] P, int[][] D)
+    
+    private int[][] matrizP;
+    private int[][] matrizD;
+    
+    public Floyd(int nodos){
+        matrizP = new int[nodos][nodos];
+        matrizD = new int[nodos][nodos];        
+    }
+    
+    public void AlgorithmFloyd(int n, int[][] W)
     {
-            D = W;
+            matrizD = W;
             for (int i = 0; i<n; i++){
                     for(int j = 0; j<n; j++){
-                            P[i][j] = 0;
+                            matrizP[i][j] = 0;
                     }
             }
              for (int k = 0; k < n; k++){
                     for(int i = 0; i < n; i++){
                             for(int j = 0; j<n; j++)
                             {
-                                    if (D[i][k] + D[k][j]< D[i][j])
+                                    if (matrizD[i][k] + matrizD[k][j]< matrizD[i][j])
                                     {
-                                            D[i][j] = D[i][k] + D[k][j];
-                                            P[i][j] = k;
+                                            matrizD[i][j] = matrizD[i][k] + matrizD[k][j];
+                                            matrizP[i][j] = k;
                                     }
                             }
                     }
