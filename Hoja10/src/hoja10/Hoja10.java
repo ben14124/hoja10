@@ -37,6 +37,7 @@ public class Hoja10 {
                     entry[0]=entry[0].substring(1).toLowerCase();
                     entry[1]=(String) entry[1].subSequence(1, entry[1].length()-1);
                     entry[1]=entry[1].toLowerCase();
+                    
                 }
               
             }
