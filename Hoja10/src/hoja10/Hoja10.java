@@ -35,18 +35,18 @@ public class Hoja10 {
         int[][] matriz3 = new int[4][4];
         
         matriz3[0][0] = 0;
-        matriz3[0][1] = 7;
+        matriz3[0][1] = 3000;
         matriz3[0][2] = 3;
         matriz3[0][3] = 3000;
-        matriz3[1][0] = 3000;
+        matriz3[1][0] = 2;
         matriz3[1][1] = 0;
         matriz3[1][2] = 3000;
-        matriz3[1][3] = 1;
+        matriz3[1][3] = 3000;
         matriz3[2][0] = 3000;
-        matriz3[2][1] = -5;
+        matriz3[2][1] = 7;
         matriz3[2][2] = 0;
-        matriz3[2][3] = 4;
-        matriz3[3][0] = 3000;
+        matriz3[2][3] = 1;
+        matriz3[3][0] = 6;
         matriz3[3][1] = 3000;
         matriz3[3][2] = 3000;
         matriz3[3][3] = 0;
@@ -55,7 +55,12 @@ public class Hoja10 {
         
         int[][] matrizD = algoritmo1.AlgorithmFloyd(4, matriz3);
         
-        System.out.println((matrizD));
+        for (int x = 0; x<4; x++){
+            for (int y = 0; y<4; y++){
+                System.out.print(matrizD[x][y] + " | ");
+            }
+            System.out.println();
+        }
         
         // now add the links between digraph nodes
 
