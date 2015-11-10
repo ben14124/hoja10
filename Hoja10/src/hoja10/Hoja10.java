@@ -8,12 +8,12 @@ package hoja10;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.Arrays;
 import java.util.Vector;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 /**
@@ -28,10 +28,8 @@ public class Hoja10 {
     public static void main(String[] args) {
         System.out.println("la ruta mas corta es: la integral de línea desde t=0 hasta t=3, parametrizando x=cost, y = sent, z = 1");
         // TODO code application logic here
-        
-        
 
-        Set<String> encabezadosMatriz = new HashSet(); //Set para los encabezados de la matriz
+        Set<String> encabezadosMatriz = new HashSet<>(); //Set para los encabezados de la matriz
         
         File diccionario = new File ("guategrafo.txt");
         Vector<String> Ciudad1 = new Vector<>();
@@ -47,6 +45,8 @@ public class Hoja10 {
                     Ciudad1.addElement(entry[0]);
                     Ciudad2.addElement(entry[1]);
                     Distancia.addElement(Integer.parseInt(entry[2]));
+                    encabezadosMatriz.add(entry[0]);
+                    encabezadosMatriz.add(entry[1]);
                 }
             }
             catch(Exception e){
@@ -55,8 +55,13 @@ public class Hoja10 {
         catch(Exception e){
             
         }
+        
+    int contador = encabezadosMatriz.size();
+    System.out.println("Cantidad de ciudades: "+contador);
+    
+    int[][] matrizW = new int[contador][contador];
                 
-    Digraph<Integer> graph= new Digraph<Integer>();
+    Digraph<Integer> graph= new Digraph<>();
     graph.addNodes(Arrays.asList(1,2,3,4,5));
 
     try 
@@ -67,6 +72,20 @@ public class Hoja10 {
             graph.setData(i, i);
         }
 
+        // now add the links between digraph nodes
+
+        graph.addLinks(1,Arrays.asList(2,3));
+        graph.addLinks(2,Arrays.asList(2,4));
+        graph.addLinks(3,Arrays.asList(1));
+        graph.addLinks(4,Arrays.asList(5));
+
+        DigraphNode<Integer> nodo1 = graph.getNode(1);
+        List<Integer> l = nodo1.Links();
+        int swag = l.size();
+        System.out.println("Links del nodo1: "+nodo1.Links()+". Con "+swag+" links");
+        
+        graph.printGraph();        
+        
         int[][] matriz3 = new int[4][4];
         
         matriz3[0][0] = 0;
@@ -97,21 +116,11 @@ public class Hoja10 {
             System.out.println();
         }
         
-        // now add the links between digraph nodes
-
-        graph.addLinks(1,Arrays.asList(2,3));
-        graph.addLinks(2,Arrays.asList(2,4));
-        graph.addLinks(3,Arrays.asList(1));
-        graph.addLinks(4,Arrays.asList(5));
-
-        graph.printGraph();
     }
-    catch ( MissingDigraphNodeException e)
+    catch (MissingDigraphNodeException e)
     {
         System.out.println(e.getMessage());
-    }
-
-        
+    } 
         
     }
     

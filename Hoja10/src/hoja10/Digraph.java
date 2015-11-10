@@ -59,7 +59,7 @@ public class Digraph<T>
         }
     }
 
-    private DigraphNode<T> getNode(int id) throws MissingDigraphNodeException 
+    DigraphNode<T> getNode(int id) throws MissingDigraphNodeException 
     {
         DigraphNode<T> node = nodes.get(id);
         if (node == null)

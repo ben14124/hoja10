@@ -49,7 +49,7 @@ class DigraphNode<T>
     public void addLink (DigraphNode<T> n) { links.add(n); }
     public void addLinks (List<DigraphNode<T> > ns) { links.addAll(ns); }
 
-    public List<DigraphNode<T> > getLinks()
+    public List<DigraphNode<T>> getLinks()
     {
         // return a new copy of the list
         ArrayList<DigraphNode<T> > l = new ArrayList<DigraphNode<T> >(); 
@@ -69,5 +69,15 @@ class DigraphNode<T>
         }
         System.out.println();
     }
+    
+    public List<T> Links()
+    {
+        List<T> l = new ArrayList<>();         
+        for ( DigraphNode<T> i : links )
+        {
+            l.add(i.data);
+        }        
+        return l;
+    }    
 }
 
