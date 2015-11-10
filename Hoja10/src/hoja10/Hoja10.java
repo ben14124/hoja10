@@ -59,9 +59,41 @@ public class Hoja10 {
     int contador = encabezadosMatriz.size();
     System.out.println("Cantidad de ciudades: "+contador);
     
+    Vector<String> Ciudades = new Vector<>();
+
+    for(int i=0; i<Ciudad1.size(); i++){
+        if(encabezadosMatriz.isEmpty() == false){
+            boolean quitar = encabezadosMatriz.remove(Ciudad1.elementAt(i));
+            if(quitar == true){
+                Ciudades.add(Ciudad1.elementAt(i));
+            }
+        }
+    }
+    
+    if(encabezadosMatriz.isEmpty() == false){
+        for(int i=0; i<Ciudad2.size(); i++){
+            if(encabezadosMatriz.isEmpty() == false){
+                boolean quitar = encabezadosMatriz.remove(Ciudad2.elementAt(i));
+                if(quitar == true){
+                    Ciudades.add(Ciudad2.elementAt(i));
+                }
+            }
+        }
+    }
+    
+    for(int i=0; i<Ciudades.size(); i++){
+        System.out.print(Ciudades.elementAt(i)+"\n");
+    }    
+        
     int[][] matrizW = new int[contador][contador];
                 
-    Digraph<Integer> graph= new Digraph<>();
+    Digraph<String> grafos = new Digraph<>();
+    Digraph<Integer> graph = new Digraph<>();
+        
+    for(int f = 0; f < contador; f++){
+        grafos.addNode(Ciudades.elementAt(f));
+    }
+    
     graph.addNodes(Arrays.asList(1,2,3,4,5));
 
     try 
