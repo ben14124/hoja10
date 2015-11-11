@@ -22,9 +22,6 @@ import java.util.Set;
  */
 public class Hoja10 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) throws MissingDigraphNodeException {
 
         Set<String> encabezadosMatriz = new HashSet<>(); //Set para los encabezados de la matriz
@@ -87,7 +84,6 @@ public class Hoja10 {
             }
         }
     }
-    
                 
     Digraph<String> grafos = new Digraph<>();
     Digraph<Integer> graph = new Digraph<>();
