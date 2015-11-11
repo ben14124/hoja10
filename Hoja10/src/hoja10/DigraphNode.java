@@ -78,6 +78,9 @@ class DigraphNode<T>
             l.add(i.data);
         }        
         return l;
-    }    
+    }  
+    public T getData(){
+        return data;
+    }
 }
 

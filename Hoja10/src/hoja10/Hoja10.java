@@ -25,9 +25,7 @@ public class Hoja10 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        System.out.println("la ruta mas corta es: la integral de línea desde t=0 hasta t=3, parametrizando x=cost, y = sent, z = 1");
-        // TODO code application logic here
+    public static void main(String[] args) throws MissingDigraphNodeException {
 
         Set<String> encabezadosMatriz = new HashSet<>(); //Set para los encabezados de la matriz
         
@@ -53,11 +51,11 @@ public class Hoja10 {
             }
         }
         catch(Exception e){
-            
         }
         
     int contador = encabezadosMatriz.size();
     System.out.println("Cantidad de ciudades: "+contador);
+    System.out.println();
     
     Vector<String> Ciudades = new Vector<>();
 
@@ -79,22 +77,56 @@ public class Hoja10 {
                 }
             }
         }
-    }
-    
-    for(int i=0; i<Ciudades.size(); i++){
-        System.out.print(Ciudades.elementAt(i)+"\n");
-    }    
+    }  
         
     int[][] matrizW = new int[contador][contador];
                 
     Digraph<String> grafos = new Digraph<>();
     Digraph<Integer> graph = new Digraph<>();
         
+    //Se crea un nodo por ciudad
     for(int f = 0; f < contador; f++){
-        grafos.addNode(Ciudades.elementAt(f));
+        grafos.addNode(f);
+        grafos.setData(f, Ciudades.elementAt(f));
     }
     
-    graph.addNodes(Arrays.asList(1,2,3,4,5));
+    //Se crean las relaciones
+    for(int f = 0; f < contador; f++){
+        String ciudad;
+        ciudad= grafos.getNode(f).getData();
+        System.out.println("Links con "+ciudad+" (ID "+f+"):");
+        
+        for(int m = 0; m < Ciudad1.size(); m++){
+            if (Ciudad1.elementAt(m).equals(ciudad)){
+                grafos.addLink(f, Ciudades.indexOf(Ciudad2.elementAt(m)));
+                //Se crea la matriz de adyacencia
+                matrizW[Ciudades.indexOf(Ciudad2.elementAt(m))][f]=Distancia.elementAt(m);
+                System.out.println("-"+Ciudad2.elementAt(m));
+            }
+        }
+    }
+    //Se imprime la matriz de adyacencia
+    System.out.println("\nMatriz de adyacencia:");
+    for (int x = 0; x<contador; x++){
+            for (int y = 0; y<contador; y++){
+                System.out.print(matrizW[x][y] + " | ");
+            }
+            System.out.println();
+        }
+    System.out.println("\nFloyd:\n");
+    Floyd algoritmo1 = new Floyd(contador);
+        
+        int[][] matrizD = algoritmo1.AlgorithmFloyd(5, matrizW);
+        
+        for (int x = 0; x<contador; x++){
+            for (int y = 0; y<contador; y++){
+                System.out.print(matrizD[x][y] + " | ");
+            }
+            System.out.println();
+        }
+        
+    
+    /*graph.addNodes(Arrays.asList(1,2,3,4,5));
 
     try 
     {       
@@ -152,7 +184,7 @@ public class Hoja10 {
     catch (MissingDigraphNodeException e)
     {
         System.out.println(e.getMessage());
-    } 
+    } */
         
     }
     
