@@ -21,13 +21,18 @@ class Floyd{
     }
     
     public int[][] AlgorithmFloyd(int n, int[][] W)
-    {
+    {     
             matrizD = W;
-            for (int i = 0; i<n; i++){
+            for (int i = 0; i<n; i++){      //Se inicializa la matrizP con 0's.
                     for(int j = 0; j<n; j++){
                             matrizP[i][j] = 0;
                     }
             }
+            
+            
+            
+            
+            
              for (int k = 0; k < n; k++){
                     for(int i = 0; i < n; i++){
                             for(int j = 0; j<n; j++)
@@ -39,6 +44,7 @@ class Floyd{
                                     }
                             }
                     }
+                    
              }
              return matrizD;
     }

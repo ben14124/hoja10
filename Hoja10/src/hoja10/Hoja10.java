@@ -80,6 +80,14 @@ public class Hoja10 {
     }  
         
     int[][] matrizW = new int[contador][contador];
+    for (int x = 0; x<contador; x++){
+        for (int y = 0; y<contador; y++){
+            if(x!=y){
+             matrizW[x][y] = 30000;
+            }
+        }
+    }
+    
                 
     Digraph<String> grafos = new Digraph<>();
     Digraph<Integer> graph = new Digraph<>();
@@ -99,93 +107,81 @@ public class Hoja10 {
         for(int m = 0; m < Ciudad1.size(); m++){
             if (Ciudad1.elementAt(m).equals(ciudad)){
                 grafos.addLink(f, Ciudades.indexOf(Ciudad2.elementAt(m)));
-                //Se crea la matriz de adyacencia
-                matrizW[Ciudades.indexOf(Ciudad2.elementAt(m))][f]=Distancia.elementAt(m);
+                //Se crea la matriz de pesos
+                matrizW[Ciudades.indexOf(Ciudad2.elementAt(m))][f]=Distancia.elementAt(m); //Se ingresa a la matriz el peso del nodo
                 System.out.println("-"+Ciudad2.elementAt(m));
             }
         }
     }
     //Se imprime la matriz de adyacencia
-    System.out.println("\nMatriz de adyacencia:");
+    System.out.println("\nMatriz de pesos:");
     for (int x = 0; x<contador; x++){
             for (int y = 0; y<contador; y++){
                 System.out.print(matrizW[x][y] + " | ");
             }
             System.out.println();
-        }
-    System.out.println("\nFloyd:\n");
-    Floyd algoritmo1 = new Floyd(contador);
-        
-        int[][] matrizD = algoritmo1.AlgorithmFloyd(5, matrizW);
-        
-        for (int x = 0; x<contador; x++){
-            for (int y = 0; y<contador; y++){
-                System.out.print(matrizD[x][y] + " | ");
-            }
-            System.out.println();
-        }
-        
-    
-    /*graph.addNodes(Arrays.asList(1,2,3,4,5));
-
-    try 
-    {       
-        // set the data fields
-        for ( int i = 1; i <= 5; ++i)
-        {
-            graph.setData(i, i);
-        }
-
-        // now add the links between digraph nodes
-
-        graph.addLinks(1,Arrays.asList(2,3));
-        graph.addLinks(2,Arrays.asList(2,4));
-        graph.addLinks(3,Arrays.asList(1));
-        graph.addLinks(4,Arrays.asList(5));
-
-        DigraphNode<Integer> nodo1 = graph.getNode(1);
-        List<Integer> l = nodo1.Links();
-        int swag = l.size();
-        System.out.println("Links del nodo1: "+nodo1.Links()+". Con "+swag+" links");
-        
-        graph.printGraph();        
-        
-        int[][] matriz3 = new int[4][4];
-        
-        matriz3[0][0] = 0;
-        matriz3[0][1] = 3000;
-        matriz3[0][2] = 3;
-        matriz3[0][3] = 3000;
-        matriz3[1][0] = 2;
-        matriz3[1][1] = 0;
-        matriz3[1][2] = 3000;
-        matriz3[1][3] = 3000;
-        matriz3[2][0] = 3000;
-        matriz3[2][1] = 7;
-        matriz3[2][2] = 0;
-        matriz3[2][3] = 1;
-        matriz3[3][0] = 6;
-        matriz3[3][1] = 3000;
-        matriz3[3][2] = 3000;
-        matriz3[3][3] = 0;
-        
-        Floyd algoritmo1 = new Floyd(4);
-        
-        int[][] matrizD = algoritmo1.AlgorithmFloyd(4, matriz3);
-        
-        for (int x = 0; x<4; x++){
-            for (int y = 0; y<4; y++){
-                System.out.print(matrizD[x][y] + " | ");
-            }
-            System.out.println();
-        }
-        
     }
-    catch (MissingDigraphNodeException e)
-    {
-        System.out.println(e.getMessage());
-    } */
+    
+    int[][] Ady = new int[contador][contador];
+    
+    System.out.println("\nAdyacencia");
+    for (int x = 0; x<contador; x++){
+        for (int y = 0; y<contador; y++){
+            if((matrizW[x][y] != 30000)){
+                Ady[x][y] = 1;
+            }
+            if((matrizW[x][y] == 0)){
+                Ady[x][y] = 0;
+            }
+        }
+    }
+    
+    for (int x = 0; x<contador; x++){
+        for (int y = 0; y<contador; y++){
+            System.out.print(Ady[x][y] + " | ");
+        }
+        System.out.println();
+    }
+    
+    Floyd algoritmo1 = new Floyd(contador);
+   
+       
+        int[][] matrizD3 = algoritmo1.AlgorithmFloyd(5, matrizW);
+
+        System.out.println("\nResultado:");
+    for (int x = 0; x<contador; x++){
+        for (int y = 0; y<contador; y++){
+            System.out.print(matrizD3[x][y] + " | ");
+        }
+        System.out.println();
+    }
         
+    int[] centro = new int[contador];
+
+    for (int x = 0; x<contador; x++){
+        centro[x] = matrizD3[0][x];
+        for (int y = 0; y<contador; y++){
+            if(matrizD3[y][x] != 0){
+                if(centro[x] < matrizD3[y][x]){
+                    centro[x] = matrizD3[y][x];
+                }
+            }
+        }
+    }
+    
+    int centroF = centro[0];
+    int ciudadC = 0;
+    
+    for (int x = 0; x<contador; x++){
+        if(centroF > centro[x]){
+            centroF = centro[x];
+            ciudadC = x;
+        }
+    }
+    
+    
+    System.out.println("La ciudad central en donde se deberia de colocar las oficinas del TSE es: "+Ciudad1.elementAt(ciudadC));
+    
     }
     
 }
