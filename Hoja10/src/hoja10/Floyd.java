@@ -33,9 +33,18 @@ class Floyd{
                     }
             }
             
-            
-            
-            
+            //Codigo basado en la presentacion de Floyd's Algorithm
+            /*
+            Floyd1. D   W   // initialize D array to W [ ]
+            2. P  0     // initialize P array to [0]
+            3. for k  1 to n
+            4.       do for i  1 to n
+            5.            do for j  1 to n
+            6.                  if (D[ i, j ] > D[ i, k ] + D[ k, j ] ) 
+            7.		          then  D[ i, j ]  D[ i, k ] + D[ k, j ] 
+            8.		                    P[ i, j ]  k; 
+
+            */
             
              for (int k = 0; k < n; k++){
                     for(int i = 0; i < n; i++){
