@@ -10,6 +10,8 @@
 *   Daniela Pocasangre A. - 14162
 * 
 * En esta clase se encuentran los metodos para que funcione un grafo con direccion.
+* 
+* Codigo obtenido de: http://codereview.stackexchange.com/questions/29915/digraph-code-in-java
 *******************************/
 package hoja10;
 

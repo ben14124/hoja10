@@ -6,3 +6,4 @@ Xela SanLucas 35
 Guastatoya Zacapa 54
 SanLucas Zacapa 190
 Peten Guatemala 350
+Guatemala Guastatoya 20
