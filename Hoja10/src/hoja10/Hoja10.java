@@ -1,8 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************
+*Universidad del Valle de Guatemala
+*Algoritmos y estructura de datos
+*Seccion 30
+*Hoja de trabajo 10: grafos
+*Integrantes del grupo:
+*   Juan Diego Benitez - 14124
+*   Maria Belen Hernandez - 14361
+*   Jose Alejandro Rivera - 14213
+*   Daniela Pocasangre A. - 14162
+* 
+* Esta clase se encarga de la interaccion con el usuario y el despliegue de resultados.
+* Imprime el resultado de aplicar el algoritmo de Floyd a los grafos que vienen en el archivo de texto Guategrafo.txt.
+*******************************/
 package hoja10;
 
 import java.io.BufferedReader;
