@@ -16,10 +16,12 @@ package hoja10;
 
 class Floyd{ 
     
+    //Se crean las matrices necesarias del algoritmo
     private int[][] matrizP;
     private int[][] matrizD;
     
     public Floyd(int nodos){
+        //Se crean del tamano de la cantidad de nodos del grafo
         matrizP = new int[nodos][nodos];
         matrizD = new int[nodos][nodos];        
     }
