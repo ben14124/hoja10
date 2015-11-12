@@ -25,7 +25,7 @@ class Floyd{
             matrizD = W;
             for (int i = 0; i<n; i++){      //Se inicializa la matrizP con 0's.
                     for(int j = 0; j<n; j++){
-                            matrizP[i][j] = 0;
+                            matrizP[i][j] = 8;
                     }
             }
             
