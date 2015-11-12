@@ -176,7 +176,18 @@ public class Hoja10 {
     }
     
     
-    System.out.println("La ciudad central en donde se deberia de colocar las oficinas del TSE es: "+Ciudad1.elementAt(ciudadC));
+    System.out.println("\nLa ciudad central en donde se deberia de colocar las oficinas del TSE es: "+Ciudad1.elementAt(ciudadC));
+    int[][] matrizP = new int[contador][contador];
+    matrizP= algoritmo1.getMatrizP();
+    
+    System.out.println("\nMatriz de rutas: ");
+    for (int x = 0; x<contador; x++){
+        for (int y = 0; y<contador; y++){
+            System.out.print(matrizP[x][y] + " | ");
+        }
+        System.out.println();
+    }
+    
     
     }
     

@@ -46,6 +46,10 @@ class Floyd{
                     }
                     
              }
+             
              return matrizD;
+    }
+    public int[][] getMatrizP(){
+        return matrizP;
     }
 }
