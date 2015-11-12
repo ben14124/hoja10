@@ -96,7 +96,7 @@ while True:
                 archivo2.close()
 
             elif opcion == 2:
-                print("CACAAAAAA NO SE COMOOOOOO") #ESTO FALTAAAAA
+                print("OPCION 2") #ESTO FALTAAAAA
 
             elif opcion == 3:
                 print("Ingrese el numero de la ciudad donde se ecuentra actualmente: \n 1. Guatemala \n 2. Guastatoya \n 3. Xela \n 4. San Lucas \n 5. Zacapa \n 6. Peten")
