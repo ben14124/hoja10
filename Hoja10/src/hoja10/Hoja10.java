@@ -200,13 +200,6 @@ public class Hoja10 {
         int[][] matrizP = new int[contador][contador];
         matrizP= algoritmo1.getMatrizP();
 
-        System.out.println("\nMatriz de rutas: ");
-        for (int x = 0; x<contador; x++){
-            for (int y = 0; y<contador; y++){
-                System.out.print(matrizP[x][y] + " | ");
-            }
-            System.out.println();
-        }
     
     
     }

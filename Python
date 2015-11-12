@@ -1,0 +1,181 @@
+import networkx as nx
+
+def leertxt():
+    archivo=open('texto.txt','r')
+    linea=archivo.readline()
+    while linea!="":
+        linea=archivo.readline()
+        if linea != "\n" and linea != "":
+            linea = linea.replace("\n","")
+            vector = linea.split(" ")
+            vector[2] = int(float(vector[2]))
+            vertices = tuple(vector[0:3])
+            listaVertices.append(vertices)
+    archivo.close()
+
+listaVertices = []
+opcion = ''
+ciudadOrigen = ''
+ciudadDestino = ''
+origen = ''
+destino = ''
+valor = ''
+cero = 1
+uno = 1
+dos = 1
+A = 1
+B = 1
+C = 1
+
+print("BIENVENIDO")
+while True:
+    try:
+        while cero == 1:
+            leertxt()
+            print("\n Seleccione el numero de lo que desee hacer: \n 1. Agregar una ruta \n 2. Indicar interrupcion de trafico \n 3. Calcular una ruta \n 4. Salir")
+            opcion = int(input())
+
+            if opcion == 1:
+                print("Ingrese el numero de la ciudad que desea como origen: \n 1. Guatemala \n 2. Guastatoya \n 3. Xela \n 4. San Lucas \n 5. Zacapa \n 6. Peten")
+                while A == 1:
+                    ciudadOrigen = int(input())
+                    if ciudadOrigen == 1:
+                        origen = 'Guatemala'
+                        A = 0
+                    elif ciudadOrigen == 2:
+                        origen = 'Guastatoya'
+                        A = 0
+                    elif ciudadOrigen == 3:
+                        origen = 'Xela'
+                        A = 0
+                    elif ciudadOrigen == 4:
+                        origen = 'SanLucas'
+                        A = 0
+                    elif ciudadOrigen == 5:
+                        origen = 'Zacapa'
+                        A = 0
+                    elif ciudadOrigen == 6:
+                        origen = 'Peten'
+                        A = 0
+                    else:
+                        print("Error. Ingrese el numero de una de las ciudades")
+
+                    print("Ingrese el numero de la ciudad que desea como destino: \n 1. Guatemala \n 2. Guastatoya \n 3. Xela \n 4. San Lucas \n 5. Zacapa \n 6. Peten")
+                while B == 1:
+                    ciudadDestino = int(input())
+                    if ciudadDestino == 1:
+                        destino = 'Guatemala'
+                        B = 0
+                    elif ciudadDestino == 2:
+                        destino = 'Guastatoya'
+                        B = 0
+                    elif ciudadDestino == 3:
+                        destino = 'Xela'
+                        B = 0
+                    elif ciudadDestino == 4:
+                        destino = 'SanLucas'
+                        B = 0
+                    elif ciudadDestino == 5:
+                        destino = 'Zacapa'
+                        B = 0
+                    elif ciudadDestino == 6:
+                        destino = 'Peten'
+                        B = 0
+                    else:
+                        print("Error. Ingrese el numero de una de las ciudades")
+
+                while C==1:
+                    valor = raw_input("Ingrese la cantidad de kilometros que separan a estas ciudades:\n ")
+                    try:
+                        valor = int(valor)
+                        C = 0
+                    except ValueError:
+                        print "Error. Debe ingresar un numero entero"
+                archivo2 = open("texto.txt","a")
+                archivo2.write(origen + ' ' + destino + ' ' + str(valor))
+                archivo2.close()
+
+            elif opcion == 2:
+                print("OPCION 2") #ESTO FALTAAAAA
+
+            elif opcion == 3:
+                print("Ingrese el numero de la ciudad donde se ecuentra actualmente: \n 1. Guatemala \n 2. Guastatoya \n 3. Xela \n 4. San Lucas \n 5. Zacapa \n 6. Peten")
+                while uno == 1:
+                    ciudadOrigen = int(input())
+                    if ciudadOrigen == 1:
+                        origen = 'Guatemala'
+                        uno = 0
+                    elif ciudadOrigen == 2:
+                        origen = 'Guastatoya'
+                        uno = 0
+                    elif ciudadOrigen == 3:
+                        origen = 'Xela'
+                        uno = 0
+                    elif ciudadOrigen == 4:
+                        origen = 'SanLucas'
+                        uno = 0
+                    elif ciudadOrigen == 5:
+                        origen = 'Zacapa'
+                        uno = 0
+                    elif ciudadOrigen == 6:
+                        origen = 'Peten'
+                        uno = 0
+                    else:
+                        print("Error. Ingrese el numero de una de las ciudades")
+
+                print("Ingrese el numero de la ciudad a donde desea llegar: \n 1. Guatemala \n 2. Guastatoya \n 3. Xela \n 4. San Lucas \n 5. Zacapa \n 6. Peten")
+                while dos == 1:
+                    ciudadDestino = int(input())
+                    if ciudadDestino == 1:
+                        destino = 'Guatemala'
+                        dos = 0
+                    elif ciudadDestino == 2:
+                        destino = 'Guastatoya'
+                        dos = 0
+                    elif ciudadDestino == 3:
+                        destino = 'Xela'
+                        dos = 0
+                    elif ciudadDestino == 4:
+                        destino = 'SanLucas'
+                        dos = 0
+                    elif ciudadDestino == 5:
+                        destino = 'Zacapa'
+                        dos = 0
+                    elif ciudadDestino == 6:
+                        destino = 'Peten'
+                        dos = 0
+                    else:
+                        print("Error. Ingrese el numero de una de las ciudades")
+
+                print
+                print("Ciudad origen: "+origen)
+                print("Ciudad destino: "+destino)
+                print
+                print("Lista de relaciones:")
+                for x in listaVertices:
+                    print x
+
+                print
+                g = nx.DiGraph()
+                g.add_weighted_edges_from(listaVertices)
+                predecesor, distance = nx.floyd_warshall_predecessor_and_distance(g)
+
+                p=nx.shortest_path(g, source=origen, target=destino)
+                p1=nx.shortest_path_length(g, source=origen, target=destino)
+
+                print "Distancia mas corta: "
+                print p
+                print "Ciudades que debe recorrer: "
+                print p1
+                print "Distancia que debe recorrer: "
+
+                #print distanciaRecorrer            ESTO FALTAAAAAAAAAA
+
+            elif opcion == 4:
+                cero = 0
+        break
+    
+    except Exception:
+        uno = 1
+        dos = 1
+        print "No existe ninguna ruta con la que se pueda llegar a su destino \n"
